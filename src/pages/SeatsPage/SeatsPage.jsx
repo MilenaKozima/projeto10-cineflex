@@ -66,7 +66,7 @@ const PageContainer = styled.div`
     padding-top: 70px;
 `
 const SeatsContainer = styled.div`
-    width: 330px;
+    width: 350px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
