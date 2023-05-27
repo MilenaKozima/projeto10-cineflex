@@ -1,4 +1,7 @@
 import styled from "styled-components"
+import MovSes from "./MovSes"
+import Seats from "./Seats"
+import Client from "./Client"
 
 export default function SuccessPage() {
 
@@ -6,24 +9,11 @@ export default function SuccessPage() {
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
-                <strong><p>Filme e sessão</p></strong>
-                <p>Tudo em todo lugar ao mesmo tempo</p>
-                <p>03/03/2023 - 14:00</p>
-            </TextContainer>
+            <MovSes />
 
-            <TextContainer>
-                <strong><p>Ingressos</p></strong>
-                <p>Assento 01</p>
-                <p>Assento 02</p>
-                <p>Assento 03</p>
-            </TextContainer>
+            <Seats />
 
-            <TextContainer>
-                <strong><p>Comprador</p></strong>
-                <p>Nome: Letícia Chijo</p>
-                <p>CPF: 123.456.789-10</p>
-            </TextContainer>
+            <Client />
 
             <button>Voltar para Home</button>
         </PageContainer>
@@ -56,16 +46,5 @@ const PageContainer = styled.div`
         align-items: center;
         text-align: center;
         color: #247A6B;
-    }
-`
-const TextContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 30px;
-    strong {
-        font-weight: bold;
-        margin-bottom: 10px;
     }
 `
