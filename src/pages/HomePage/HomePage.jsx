@@ -8,11 +8,7 @@ export default function HomePage() {
 
             <ListContainer>
                 <Movie/>
-                <Movie/>
-                <Movie/>
-                <Movie/>
-                <Movie/>
-                <Movie/>
+                
             </ListContainer>
 
         </PageContainer>

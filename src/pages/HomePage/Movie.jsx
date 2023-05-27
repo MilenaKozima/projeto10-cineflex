@@ -20,14 +20,20 @@ export default function Movie(){
         })
     },[])
 
+    if (movies.length === 0){
+        return(<div>Carregando ...</div>)
+    }
+
     
     return (
-        {movies.map(mov => (
-            <MovieContainer>
-            <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-            </MovieContainer>
-        ))}
-    );
+        <>
+          {movies.map((mov) => (
+             <MovieContainer key={mov.id}>
+               <img src={mov.posterURL} alt="poster" />
+             </MovieContainer>
+          ))}
+        </>
+      );
 }
 
 const MovieContainer = styled.div`
