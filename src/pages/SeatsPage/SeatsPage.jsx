@@ -9,18 +9,33 @@ export default function SeatsPage() {
     const parametros = useParams();
     console.log(parametros);
 
+    const [bancos, setBancos] = useState([]);
+
+
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${parametros.idSessao}/seats`)
+
+        promise.then((resposta) => {
+            console.log(resposta.data);
+            setBancos(resposta.data);
+        })
+
+        promise.catch((erro) => {
+            console.log(erro.response.data);
+        })
+    }, [])
+
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
-            <SeatsContainer>
-                <SeatItem>01</SeatItem>
-                <SeatItem>02</SeatItem>
-                <SeatItem>03</SeatItem>
-                <SeatItem>04</SeatItem>
-                <SeatItem>05</SeatItem>
+            <SeatsContainer data-test="seat">
+                {bancos && bancos.seats && bancos.seats.map((seat) => (
+                    <SeatItem key={seat.id}>{seat.name}</SeatItem>
+                ))}
             </SeatsContainer>
+
 
             <CaptionContainer>
                 <CaptionItem>

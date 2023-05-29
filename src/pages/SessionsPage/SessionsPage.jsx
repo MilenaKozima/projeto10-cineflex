@@ -31,15 +31,15 @@ export default function SessionsPage() {
     return (
         <PageContainer>
             Selecione o horário
-            <div>
+            <div data-test="movie-day">
                 {sess.days.map((ses) => (
                     <SessionContainer key={ses.date}>
                         <div>{ses.weekday}</div>
 
                         <ButtonsContainer key={ses.showtimes.id}>
                             {ses.showtimes.map((showtime) => (
-                                <Link key={showtime.id} to={`/assentos/${ses.showtimes[1].id}`}>
-                                    <button>{showtime.name}</button>
+                                <Link key={showtime.id} to={`/assentos/${showtime.id}`}>
+                                    <button data-test="showtime">{showtime.name}</button>
                                 </Link>
                             ))}
                         </ButtonsContainer>
@@ -48,7 +48,7 @@ export default function SessionsPage() {
 
             </div>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={sess.posterURL} alt="poster" />
                 </div>
