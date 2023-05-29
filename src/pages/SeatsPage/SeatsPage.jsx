@@ -1,6 +1,14 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { Link, useParams } from "react-router-dom"
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function SeatsPage() {
+
+    const parametros = useParams();
+    console.log(parametros);
+
 
     return (
         <PageContainer>

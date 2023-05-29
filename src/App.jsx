@@ -5,6 +5,7 @@ import SessionsPage from "./pages/SessionsPage/SessionsPage"
 import SuccessPage from "./pages/SuccessPage/SuccessPage"
 import axios from "axios"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function App() {
 
@@ -12,7 +13,9 @@ export default function App() {
 
     return (
         <BrowserRouter>
-           <NavContainer>CINEFLEX</NavContainer>
+           <NavContainer>
+            <Link to='/'>CINEFLEX</Link>
+            </NavContainer>
 
             <Routes>
                 <Route path='/' element={<HomePage/>}/>

@@ -1,19 +1,61 @@
-import styled from "styled-components"
-import Session from "./Session"
-import Footer from "./Footer"
+import styled from "styled-components";
+import { Link, useParams } from "react-router-dom"
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function SessionsPage() {
+
+    const parametros = useParams();
+
+    const [sess, setSess] = useState(undefined);
+
+    useEffect(() => {
+        const url = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${parametros.idFilme}/showtimes`
+
+        const teste = axios.get(url)
+
+        teste.then((resposta) => {
+            setSess(resposta.data);
+        })
+
+        teste.catch((erro) => {
+            console.log(erro.response.data);
+        })
+    }, [])
+
+    if (sess === undefined) {
+        return <div>Carregando...</div>
+    }
 
     return (
         <PageContainer>
             Selecione o horário
             <div>
-                <Session />
-                <Session />
-                <Session />
+                {sess.days.map((ses) => (
+                    <SessionContainer key={ses.date}>
+                        <div>{ses.weekday}</div>
+
+                        <ButtonsContainer key={ses.showtimes.id}>
+                            {ses.showtimes.map((showtime) => (
+                                <Link key={showtime.id} to={`/assentos/${ses.showtimes[1].id}`}>
+                                    <button>{showtime.name}</button>
+                                </Link>
+                            ))}
+                        </ButtonsContainer>
+                    </SessionContainer>
+                ))}
+
             </div>
 
-            <Footer/>
+            <FooterContainer>
+                <div>
+                    <img src={sess.posterURL} alt="poster" />
+                </div>
+                <div>
+                    <p>{sess.title}</p>
+                </div>
+            </FooterContainer>
 
         </PageContainer>
     )
@@ -31,5 +73,64 @@ const PageContainer = styled.div`
     padding-top: 70px;
     div {
         margin-top: 20px;
+    }
+`
+const SessionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #293845;
+    padding: 0 20px;
+`
+const ButtonsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    button {
+        margin-right: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+`
+
+const FooterContainer = styled.div`
+    width: 100%;
+    height: 120px;
+    background-color: #C3CFD9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+    position: fixed;
+    bottom: 0;
+
+    div:nth-child(1) {
+        box-shadow: 0px 2px 4px 2px #0000001A;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        margin: 12px;
+        img {
+            width: 50px;
+            height: 70px;
+            padding: 8px;
+        }
+    }
+
+    div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        p {
+            text-align: left;
+            &:nth-child(2) {
+                margin-top: 10px;
+            }
+        }
     }
 `

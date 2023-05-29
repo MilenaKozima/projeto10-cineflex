@@ -2,6 +2,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom"
 
 export default function Movie(){
 
@@ -11,7 +12,7 @@ export default function Movie(){
         const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies")
 
         promise.then((resposta) => {
-            console.log(resposta.data);
+
             setMovies(resposta.data);
         })
 
@@ -29,7 +30,9 @@ export default function Movie(){
         <>
           {movies.map((mov) => (
              <MovieContainer key={mov.id}>
-               <img src={mov.posterURL} alt="poster" />
+                <Link to={`/sessoes/${mov.id}`}>
+                <img src={mov.posterURL} alt="poster" />
+                </Link>
              </MovieContainer>
           ))}
         </>
