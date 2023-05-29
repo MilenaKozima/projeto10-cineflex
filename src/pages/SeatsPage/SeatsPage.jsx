@@ -59,7 +59,11 @@ export default function SeatsPage() {
                 CPF do Comprador:
                 <input data-test="client-cpf" placeholder="Digite seu CPF..." />
 
+
+                <Link to={`/sucesso`}>
                 <button>Reservar Assento(s)</button>
+                </Link>
+
             </FormContainer>
 
             <FooterContainer data-test="footer">
