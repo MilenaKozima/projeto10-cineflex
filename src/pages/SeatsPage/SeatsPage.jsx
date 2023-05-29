@@ -54,21 +54,27 @@ export default function SeatsPage() {
 
             <FormContainer>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
+                <input data-test="client-name" placeholder="Digite seu nome..." />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
+                <input data-test="client-cpf" placeholder="Digite seu CPF..." />
 
                 <button>Reservar Assento(s)</button>
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster" />
+                    {bancos.movie?.posterURL && (
+                        <img src={bancos.movie.posterURL} alt="poster" />
+                    )}
                 </div>
                 <div>
-                    <p>Tudo em todo lugar ao mesmo tempo</p>
-                    <p>Sexta - 14h00</p>
+                    {bancos.movie?.title && (
+                        <p>{bancos.movie.title}</p>
+                    )}
+                    {bancos.days?.weekday && (
+                        <p>{bancos.days.weekday}</p>
+                    )}<p> - {bancos.name}</p>
                 </div>
             </FooterContainer>
 
