@@ -7,6 +7,7 @@ import axios from "axios";
 export default function SessionsPage() {
 
     const parametros = useParams();
+    console.log(parametros);
 
     const [sess, setSess] = useState(undefined);
 
@@ -20,7 +21,7 @@ export default function SessionsPage() {
         })
 
         teste.catch((erro) => {
-            console.log(erro.response.data);
+            //console.log(erro.response.data);
         })
     }, [])
 
@@ -34,7 +35,7 @@ export default function SessionsPage() {
             <div data-test="movie-day">
                 {sess.days.map((ses) => (
                     <SessionContainer key={ses.date} data-test="movie-day">
-                        <div>{ses.weekday}</div>
+                        <div>{ses.weekday} - {ses.date}</div>
 
                         <ButtonsContainer key={ses.showtimes.id} data-test="movie-day">
                             {ses.showtimes.map((showtime) => (
@@ -90,6 +91,11 @@ const ButtonsContainer = styled.div`
     margin: 20px 0;
     button {
         margin-right: 20px;
+        background-color: #E8833A;
+        border-radius: 3px;
+        width: 83px;
+        height: 43px;
+        border-color: #E8833A;
     }
     a {
         text-decoration: none;
@@ -128,6 +134,7 @@ const FooterContainer = styled.div`
         align-items: flex-start;
         p {
             text-align: left;
+            font-family: 'Roboto', sans-serif;
             &:nth-child(2) {
                 margin-top: 10px;
             }

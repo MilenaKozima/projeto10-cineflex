@@ -43,5 +43,6 @@ const NavContainer = styled.div`
     a {
         text-decoration: none;
         color: #E8833A;
+        font-family: 'Roboto', sans-serif;
     }
 `

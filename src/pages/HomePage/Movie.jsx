@@ -25,7 +25,8 @@ export default function Movie(){
         return(<div>Carregando ...</div>)
     }
 
-    
+
+
     return (
         <>
           {movies.map((mov) => (

@@ -7,7 +7,6 @@ import axios from "axios";
 export default function SeatsPage() {
 
     const parametros = useParams();
-    console.log(parametros);
 
     const [bancos, setBancos] = useState([]);
 
@@ -21,7 +20,7 @@ export default function SeatsPage() {
         })
 
         promise.catch((erro) => {
-            console.log(erro.response.data);
+            //console.log(erro.response.data);
         })
     }, [])
 
