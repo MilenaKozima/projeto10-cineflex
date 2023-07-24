@@ -41,7 +41,7 @@ export default function Form(props) {
                 onChange={(e) => setCpf(e.target.value)}
             />
 
-            <button type="submit">Reservar Assento(s)</button>
+            <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
 
 
         </FormContainer>
