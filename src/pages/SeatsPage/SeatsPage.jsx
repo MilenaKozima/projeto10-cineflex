@@ -7,7 +7,9 @@ import { colors } from "../../components/colors";
 import Seat from "./Seat";
 import Form from "./Form";
 
-export default function SeatsPage() {
+export default function SeatsPage(props) {
+
+    const {info, setInfos} = props;
 
     const parametros = useParams();
 
@@ -71,7 +73,7 @@ export default function SeatsPage() {
                 </CaptionItem>
             </CaptionContainer>
 
-            <Form selecteds={selecteds}/>
+            <Form selecteds={selecteds} bancos={bancos} setInfos={setInfos}/>
 
             <FooterContainer data-test="footer">
                 <div>

@@ -1,21 +1,34 @@
 import styled from "styled-components"
-import MovSes from "./MovSes"
-import Seats from "./Seats"
-import Client from "./Client"
+import Movie from "../HomePage/Movie";
+import { Link } from "react-router-dom";
 
-export default function SuccessPage() {
+export default function SuccessPage(props) {
+
+    const{movie, date, session, seats, nome, cpf} = props.infos;
 
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <MovSes />
+            <TextContainer data-test="movie-info">
+                <strong><p>Filme e sessão</p></strong>
+                <p>{movie}</p>
+                <p>{date} - {session}</p>
+            </TextContainer>
 
-            <Seats />
+            <TextContainer data-test="seats-info">
+                <strong><p>Ingressos</p></strong>
+                {seats && seats.length > 0 ? seats.map(se => <p key={se}>{se}</p>) : <p>No seats selected</p>}
+            </TextContainer>
 
-            <Client />
+            <TextContainer data-test="client-info">
+                <strong><p>Comprador</p></strong>
+                <p>Nome: {nome}</p>
+                <p>CPF: {cpf}</p>
+            </TextContainer>
 
-            <button>Voltar para Home</button>
+            <Link to="/"><button data-test="go-home-btn" >Voltar para Home</button></Link>
+            
         </PageContainer>
     )
 }
@@ -46,5 +59,16 @@ const PageContainer = styled.div`
         align-items: center;
         text-align: center;
         color: #247A6B;
+    }
+`
+const TextContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+    strong {
+        font-weight: bold;
+        margin-bottom: 10px;
     }
 `
