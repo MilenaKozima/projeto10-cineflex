@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { colors } from "../../components/colors";
 import Seat from "./Seat";
+import Form from "./Form";
 
 export default function SeatsPage() {
 
@@ -70,19 +71,7 @@ export default function SeatsPage() {
                 </CaptionItem>
             </CaptionContainer>
 
-            <FormContainer>
-                Nome do Comprador:
-                <input data-test="client-name" placeholder="Digite seu nome..." />
-
-                CPF do Comprador:
-                <input data-test="client-cpf" placeholder="Digite seu CPF..." />
-
-
-                <Link to={`/sucesso`}>
-                <button>Reservar Assento(s)</button>
-                </Link>
-
-            </FormContainer>
+            <Form selecteds={selecteds}/>
 
             <FooterContainer data-test="footer">
                 <div>
@@ -125,18 +114,29 @@ const SeatsContainer = styled.div`
     justify-content: center;
     margin-top: 20px;
 `
-const FormContainer = styled.div`
+ export const FormContainer = styled.form`
     width: calc(100vw - 40px); 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 20px 0;
     font-size: 18px;
+    color:#293845;
     button {
         align-self: center;
+        width: 225px;
+        height: 42px;
+        background-color: #E8833A;
+        border-radius: 3px;
+        border-color: #E8833A;
+        font-family: 'Roboto';
+        color:#FFFFFF;
     }
     input {
         width: calc(100vw - 60px);
+        border-radius: 3px;
+        border-color: #D4D4D4;
+        height: 51px;
     }
 `
 const CaptionContainer = styled.div`
